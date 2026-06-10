@@ -2,3 +2,5 @@ openai
 azure-identity
 python-dotenv
 requests
+fastapi
+uvicorn

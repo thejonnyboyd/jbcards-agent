@@ -1,2 +1,29 @@
+# Environment variables - never commit these
 .env
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
 .venv/
+venv/
+*.egg-info/
+dist/
+build/
+
+# Node / React
+frontend/node_modules/
+frontend/dist/
+frontend/.DS_Store
+
+# Mac
+.DS_Store
+.AppleDouble
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
+uvicorn.log
