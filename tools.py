@@ -1,18 +1,20 @@
 import json
 
+# --- Tool schemas (passed to the API) ---
+
 TOOL_DEFINITIONS = [
     {
         "type": "function",
         "function": {
-            "name": "research_and_card_value",
+            "name": "research_card_value",
             "description": "Research the estimated resale value of a sports card based on recent eBay sold listings",
             "parameters": {
                 "type": "object",
                 "properties": {
                     "player": {"type": "string", "description": "Player name e.g. Jude Bellingham"},
-                    "year": {"type": "string", "description": "Card year e.g. 2025/2026"},
-                    "set": {"type": "string", "description": "Card set e.g. Topps Chrome UEFA Club Competitions"},
-                    "parallel": {"type": "string", "description": "Parallel type e.g. Gold Refactor /50"},
+                    "year": {"type": "string", "description": "Card year e.g. 2023"},
+                    "set": {"type": "string", "description": "Card set e.g. Topps Chrome UEFA"},
+                    "parallel": {"type": "string", "description": "Parallel type e.g. Gold Refractor /50"},
                     "condition": {"type": "string", "description": "Card condition e.g. Near Mint"}
                 },
                 "required": ["player", "set"]
@@ -30,7 +32,7 @@ TOOL_DEFINITIONS = [
                     "box_cost": {"type": "number", "description": "What you paid for the box in GBP"},
                     "card_values": {
                         "type": "array",
-                        "description": "List of estimated card values in GBP",
+                        "description": "List of cards with estimated values",
                         "items": {
                             "type": "object",
                             "properties": {
@@ -47,15 +49,17 @@ TOOL_DEFINITIONS = [
     }
 ]
 
+# --- Tool implementations ---
+
 def research_card_value(player, set, year=None, parallel=None, condition=None):
     """
-    Stub for now - replace with real eBay Browse API call later.
+    Stub for now — replace with real eBay Browse API call later.
     """
     return {
         "player": player,
         "set": set,
         "parallel": parallel or "Base",
-        "estimated_value_gbp": "Research not yet connected - please estimate manually",
+        "estimated_value_gbp": "Research not yet connected — please estimate manually",
         "note": "Plug in eBay Browse API here for live data"
     }
 
@@ -64,7 +68,7 @@ def calculate_break_roi(box_cost, card_values, ebay_fee_percent=12.8):
     fees = total_value * (ebay_fee_percent / 100)
     net_profit = total_value - fees - box_cost
 
-    return{
+    return {
         "box_cost_gbp": box_cost,
         "total_estimated_value_gbp": round(total_value, 2),
         "ebay_fees_gbp": round(fees, 2),

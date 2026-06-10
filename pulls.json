@@ -1,8 +1,10 @@
 {
-   "box": "Topps Chrome UEFA 2025/2026",
-   "cost_gbp": 85,
+   "box": "Topps Signature NFL 2025",
+   "cost_gbp": 25,
    "pulls": [
-        {"player": "Jude Bellingham", "parallel": "Gold Refractor /50" },
-        {"player": "Pedri", "parallel": "Base Auto" }
+        {"player": "Trey McBride", "parallel": "Zone Out" },
+        {"player": "De'Von Achane", "parallel": "Zone Out" },
+        {"player": "Donozan Mitchell", "parallel": "Auto /150" },
+        {"player": "Jaylen Waddle", "parallel": "/225" }
    ]
 }

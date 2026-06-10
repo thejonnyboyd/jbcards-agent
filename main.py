@@ -1,6 +1,5 @@
 import os
 import json
-
 from openai import AzureOpenAI
 from dotenv import load_dotenv
 from agent import run_agent
@@ -18,17 +17,17 @@ DEPLOYMENT = os.getenv("AZURE_OPENAI_DEPLOYMENT")
 def load_pulls(filepath="pulls.json"):
     with open(filepath, "r") as f:
         return json.load(f)
-    
+
 def format_prompt(data):
     pulls_list = "\n".join(
         f"- {p['player']} ({p['parallel']})" for p in data["pulls"]
     )
     return f"""
-I just did a {data['box']} box break. I paid £{data['cost_gbp']} for the box
+I just did a {data['box']} box break. I paid £{data['cost_gbp']} for the box.
 Here's what I pulled:
 {pulls_list}
 
-Give me a full ROI breakdown and recommendations on what to list, hold, or bundle.
+Give me a full ROI breakdown and recommendations.
 """
 
 if __name__ == "__main__":
