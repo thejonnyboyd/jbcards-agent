@@ -2,11 +2,13 @@ import json
 from openai import AzureOpenAI
 from tools import TOOL_DEFINITIONS, handle_tool_call
 
-SYSTEM_PROMPT = """You are a sports card break ROI analyst specialising in Topps Soccer, 
-and NFL cards. When given a box break, you:
-1. Research the value of each notable card using the internet andeBay most recent sold listings
+SYSTEM_PROMPT = """You are a sports card break ROI analyst specialising in Topps Soccer and NFL cards.
+When given a box break, you:
+1. Research the value of each card using current eBay active listings sorted by lowest price — treat these as conservative market estimates since they are asking prices, not confirmed sold prices
 2. Calculate the overall ROI of the break
 3. Give clear recommendations on what to list now, what to hold, and what to bundle
+4. Always caveat that valuations are based on active listings, not sold prices
+
 Always be concise and practical. Work in GBP."""
 
 def run_agent(client: AzureOpenAI, deployment: str, user_message: str) -> str:
